@@ -12,7 +12,7 @@ from paddleocr import PaddleOCR
 
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 #Create a Video Capture Object
-cap = cv2.VideoCapture("data/carLicence1.mp4")
+cap = cv2.VideoCapture("data/carLicence4.mp4")
 #Initialize the YOLOv10 Model
 model = YOLOv10("weights/best.pt")
 #Initialize the frame count
@@ -117,7 +117,7 @@ while True:
                 c2 = x1 + textSize[0], y1 - textSize[1] - 3
                 cv2.rectangle(frame, (x1, y1), c2, (255, 0, 0), -1)
                 cv2.putText(frame, label, (x1, y1 - 2), 0, 0.5, [255,255,255], thickness=1, lineType=cv2.LINE_AA)
-        if (currentTime - startTime).seconds >= 20:
+        if (currentTime - startTime).seconds >= 3600:
             endTime = currentTime
             save_json(license_plates, startTime, endTime)
             startTime = currentTime
